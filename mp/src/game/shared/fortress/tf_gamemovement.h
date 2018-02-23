@@ -31,8 +31,6 @@ public:
 	// Utility
 	inline CTFMoveData *TFMove( void )	{ return static_cast<CTFMoveData*>( mv ); }
 
-protected:
-
 	// Player movement functions.
 	virtual bool	PrePlayerMove( void );
 	virtual void	HandlePlayerMove( void );
@@ -80,8 +78,6 @@ protected:
 	bool			RedirectGroundVelocity( const trace_t &trace );
 	bool			RedirectAirVelocity( const trace_t &trace );
 	inline int		BlockerType( const Vector &vImpactNormal );
-
-protected:
 
 	// Per movement collision data cache(s)
 	Vector					m_vecGroundNormal;

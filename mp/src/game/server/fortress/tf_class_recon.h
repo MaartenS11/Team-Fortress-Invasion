@@ -13,8 +13,8 @@
 #include "tf_playerclass.h"
 #include "basetfcombatweapon_shared.h"//MS11
 
-//class CTFJetpackSteam;
-//class CReconJetpackLevel;
+class CTFJetpackSteam;
+class CReconJetpackLevel;
 
 
 //=====================================================================
