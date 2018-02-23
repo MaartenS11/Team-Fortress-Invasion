@@ -1,0 +1,368 @@
+//-----------------------------------------------------------------------------
+//	SERVER_HL2MP.VPC
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+$Macro GAMENAME 	"invasion" [!$SOURCESDK]
+$Macro GAMENAME 	"invasion" [$SOURCESDK]
+
+$Include "$SRCDIR\game\server\server_base.vpc"
+$Include "$SRCDIR\game\server\nav_mesh.vpc" [$SOURCESDK]
+
+$Configuration
+{
+	$Compiler
+	{
+		$AdditionalIncludeDirectories	"$BASE;$SRCDIR\game\shared\hl2,.\hl2,.\hl2mp,.\fortress,$SRCDIR\game\shared\fortress,$SRCDIR\game\shared\hl2mp"
+		$PreprocessorDefinitions		"$BASE"
+	}
+}
+
+$Project "Server"
+{
+	$Folder	"Source Files"
+	{
+		$File	"ai_relationship.cpp"
+		$File	"basegrenade_concussion.cpp"
+		$File	"basegrenade_contact.cpp"
+		$File	"basegrenade_timed.cpp"
+		$File	"EntityFlame.h"
+		$File	"hl2\Func_Monitor.cpp"
+		$File	"grenadethrown.cpp"
+		$File	"grenadethrown.h"
+		$File	"h_cycler.cpp"
+		$File	"h_cycler.h"
+		$File	"monstermaker.cpp"
+		$File	"monstermaker.h"
+		$File	"physics_bone_follower.h"
+		$File	"$SRCDIR\game\shared\predicted_viewmodel.cpp"
+		$File	"$SRCDIR\game\shared\predicted_viewmodel.h"
+		$File	"$SRCDIR\game\shared\ragdoll_shared.h"
+		$File	"$SRCDIR\game\shared\solidsetdefaults.h"
+		$File	"$SRCDIR\game\shared\hl2\survival_gamerules.cpp"
+		$File	"team_objectiveresource.cpp"
+		$File	"team_objectiveresource.h"
+		$File	"team_spawnpoint.cpp"
+		$File	"team_spawnpoint.h"
+		$File	"team_control_point.cpp"
+		$File	"team_control_point.h"
+		$File	"team_control_point_master.cpp"
+		$File	"team_control_point_master.h"
+		$File	"team_control_point_round.cpp"
+		$File	"team_control_point_round.h"
+		$File	"team_train_watcher.cpp"
+		$File	"team_train_watcher.h"
+		$File	"$SRCDIR\game\shared\teamplayroundbased_gamerules.cpp"
+		$File	"$SRCDIR\game\shared\touchlink.h"
+		$File	"trigger_area_capture.cpp"
+		$File	"trigger_area_capture.h"
+		$File   "$SRCDIR\game\shared\teamplay_round_timer.cpp"
+		$File   "$SRCDIR\game\shared\teamplay_round_timer.h"
+		$File	"mapdata_server.cpp"
+		
+		$File	"$SRCDIR\game\shared\weapon_parse_default.cpp"
+
+		$File "$SRCDIR\game\shared\Multiplayer\multiplayer_animstate.cpp"
+
+		$Folder	"Invasion"
+		{
+			$Folder	"Shared"
+			{
+				$File	$SRCDIR\game\shared\fortress\grenade_base_empable.cpp
+				$File	$SRCDIR\game\shared\fortress\grenade_base_empable.h
+				$File	$SRCDIR\game\shared\fortress\baseobject_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\baseobject_shared.h
+				$File	$SRCDIR\game\shared\fortress\basetfcombatweapon_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\basetfcombatweapon_shared.h
+				$File	$SRCDIR\game\shared\fortress\basetfplayer_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\basetfplayer_shared.h
+				$File	$SRCDIR\game\shared\fortress\basetfvehicle.cpp
+				$File	$SRCDIR\game\shared\fortress\basetfvehicle.h
+				$File	$SRCDIR\game\shared\fortress\env_meteor_shared.cpp
+
+				// Grenades
+				$File	$SRCDIR\game\shared\fortress\grenade_objectsapper.cpp
+				$File	$SRCDIR\game\shared\fortress\grenade_objectsapper.h
+				$File	$SRCDIR\game\shared\fortress\grenade_limpetmine.cpp
+				$File	$SRCDIR\game\shared\fortress\grenade_limpetmine.h
+
+				$File	$SRCDIR\game\shared\fortress\ihasbuildpoints.h
+				$File	$SRCDIR\game\shared\fortress\plasmaprojectile.cpp
+				$File	$SRCDIR\game\shared\fortress\plasmaprojectile.h
+				$File	$SRCDIR\game\shared\fortress\plasmaprojectile_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\plasmaprojectile_shared.h
+				$File	$SRCDIR\game\shared\fortress\team_messages.cpp
+				$File	$SRCDIR\game\shared\fortress\techtree.cpp
+				$File	$SRCDIR\game\shared\fortress\techtree.h
+				$File	$SRCDIR\game\shared\fortress\techtree_parse.cpp
+				$File	$SRCDIR\game\shared\fortress\tfclassdata_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\tfclassdata_shared.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_chooser.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_chooser.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_commando.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_commando.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_defender.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_defender.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_medic.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_medic.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_recon.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_recon.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_sniper.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_sniper.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_infiltrator.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_infiltrator.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_escort.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_escort.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_pyro.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_pyro.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_sapper.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_sapper.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamerules.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamerules.h
+				$File	$SRCDIR\game\shared\fortress\tf_hints.h
+				$File	$SRCDIR\game\shared\fortress\tf_movedata.h
+				$File	$SRCDIR\game\shared\fortress\tf_playeranimstate.h
+				$File	$SRCDIR\game\shared\fortress\tf_shareddefs.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_shareddefs.h
+				$File	$SRCDIR\game\shared\fortress\tf_shieldshared.h
+				$File	$SRCDIR\game\shared\fortress\tf_shield_mobile_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_shield_shared.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_tacticalmap.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_usermessages.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_vehicleshared.h
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_support.cpp
+				$File	$SRCDIR\game\shared\fortress\tf_gamemovement_support.h
+				$File	$SRCDIR\game\shared\fortress\vehicle_mortar_shared.h
+				$File	$SRCDIR\game\shared\fortress\env_laserdesignation.cpp
+				$File	$SRCDIR\game\shared\fortress\env_laserdesignation.h
+			}
+
+			$Folder	"Weapons"
+			{
+				$Folder "Shared"
+				{
+					$File	$SRCDIR\game\shared\fortress\weapon_repairgun.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_repairgun.h
+					$File	$SRCDIR\game\shared\fortress\weapon_basecombatobject.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_basecombatobject.h
+					$File	$SRCDIR\game\shared\fortress\weapon_builder.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_builder.h
+					$File	$SRCDIR\game\shared\fortress\weapon_combatshield.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_combatshield.h
+					$File	$SRCDIR\game\shared\fortress\weapon_combat_burstrifle.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_combat_plasmarifle.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_combat_laserrifle.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_combat_usedwithshieldbase.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_combat_usedwithshieldbase.h
+					$File	$SRCDIR\game\shared\fortress\weapon_objectselection.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_objectselection.h
+					$File	$SRCDIR\game\shared\fortress\weapon_twohandedcontainer.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_twohandedcontainer.h
+					$File	$SRCDIR\game\shared\fortress\weapon_arcwelder.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_shield.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_shield.h
+					$File	$SRCDIR\game\shared\fortress\weapon_rocketlauncher.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_rocketlauncher.h
+					$File	$SRCDIR\game\shared\fortress\weapon_grenade_rocket.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_grenade_rocket.h
+					$File	$SRCDIR\game\shared\fortress\weapon_gas_can.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_gas_can.h
+					$File	$SRCDIR\game\shared\fortress\weapon_flame_thrower.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_flame_thrower.h
+					$File	$SRCDIR\game\shared\fortress\weapon_limpetmine.cpp
+					$File	$SRCDIR\game\shared\fortress\weapon_limpetmine.h
+				}
+			}
+			
+			$Folder	"Objects"
+			{
+				$File	fortress/tf_obj.cpp
+				$File	fortress/tf_obj.h
+				$File	fortress/tf_obj_armor_upgrade.cpp
+				$File	fortress/tf_obj_armor_upgrade.h
+				$File	fortress/tf_obj_barbed_wire.cpp
+				$File	fortress/tf_obj_barbed_wire.h
+				$File	fortress/tf_obj_buff_station.cpp
+				$File	fortress/tf_obj_buff_station.h
+				$File	fortress/tf_obj_powerpack.cpp
+				$File	fortress/tf_obj_powerpack.h
+				$File	fortress/tf_obj_rallyflag.cpp
+				$File	fortress/tf_obj_rallyflag.h
+				$File	fortress/tf_obj_resourcepump.cpp
+				$File	fortress/tf_obj_resourcepump.h
+				$File	fortress/tf_obj_respawn_station.cpp
+				$File	fortress/tf_obj_respawn_station.h
+				$File	fortress/tf_obj_resupply.cpp
+				$File	fortress/tf_obj_resupply.h
+				$File	fortress/tf_obj_sandbag_bunker.cpp
+				$File	fortress/tf_obj_sandbag_bunker.h
+				$File	fortress/tf_obj_shieldwall.cpp
+				$File	fortress/tf_obj_shieldwall.h
+				$File	fortress/tf_obj_manned_missilelauncher.cpp
+				$File	fortress/tf_obj_manned_missilelauncher.h
+				$File	fortress/tf_obj_sentrygun.cpp
+				$File	fortress/tf_obj_sentrygun.h
+
+				$Folder "Shared"
+				{
+					$File	$SRCDIR\game\shared\fortress\tf_obj_basedrivergun_shared.cpp
+					$File	$SRCDIR\game\shared\fortress\tf_obj_basedrivergun_shared.h
+					$File	$SRCDIR\game\shared\fortress\tf_obj_baseupgrade_shared.cpp
+					$File	$SRCDIR\game\shared\fortress\tf_obj_baseupgrade_shared.h
+					$File	$SRCDIR\game\shared\fortress\tf_obj_manned_plasmagun_shared.cpp
+					$File	$SRCDIR\game\shared\fortress\tf_obj_manned_plasmagun_shared.h
+					$File	$SRCDIR\game\shared\fortress\tf_obj_base_manned_gun.cpp
+					$File	$SRCDIR\game\shared\fortress\tf_obj_base_manned_gun.h
+					$File	$SRCDIR\game\shared\fortress\tf_obj_manned_plasmagun.cpp
+					$File	$SRCDIR\game\shared\fortress\tf_obj_manned_plasmagun.h
+				}
+			}
+			
+			$Folder "Classes"
+			{
+				$File	fortress/tf_class_commando.cpp
+				$File	fortress/tf_class_commando.h
+				$File	fortress/tf_class_defender.cpp
+				$File	fortress/tf_class_defender.h
+				$File	fortress/tf_class_recon.cpp
+				$File	fortress/tf_class_recon.h
+				$File	fortress/tf_class_medic.cpp
+				$File	fortress/tf_class_medic.h
+				$File	fortress/tf_class_support.cpp
+				$File	fortress/tf_class_support.h
+				$File	fortress/tf_class_infiltrator.cpp
+				$File	fortress/tf_class_infiltrator.h
+				$File	fortress/tf_class_escort.cpp
+				$File	fortress/tf_class_escort.h
+				$File	fortress/tf_class_sniper.cpp
+				$File	fortress/tf_class_sniper.h
+				$File	fortress/tf_class_pyro.cpp
+				$File	fortress/tf_class_pyro.h
+				$File	fortress/tf_class_sapper.cpp
+				$File	fortress/tf_class_sapper.h
+			}
+			
+			//$Folder "Orders"
+			//{
+				$File	fortress/orders.cpp
+				$File	fortress/orders.h
+				$File	fortress/order_assist.cpp
+				$File	fortress/order_assist.h
+				$File	fortress/order_events.cpp
+				$File	fortress/order_events.h
+				$File	fortress/order_heal.cpp
+				$File	fortress/order_heal.h
+				$File	fortress/order_helpers.cpp
+				$File	fortress/order_helpers.h
+				$File	fortress/order_player.cpp
+				$File	fortress/order_player.h
+				$File	fortress/order_repair.cpp
+				$File	fortress/order_repair.h
+				$File	fortress/order_resourcepump.cpp
+				$File	fortress/order_resourcepump.h
+				$File	fortress/order_resupply.cpp
+				$File	fortress/order_resupply.h
+				$File	fortress/order_mortar_attack.cpp
+				$File	fortress/order_mortar_attack.h
+				$File	fortress/order_buildshieldwall.cpp
+				$File	fortress/order_buildshieldwall.h
+				$File	fortress/order_killmortarguy.cpp
+				$File	fortress/order_killmortarguy.h
+			//}
+			
+			$File	fortress/entity_burn_effect.cpp
+			$File	fortress/fire_damage_mgr.cpp
+			$File	fortress/gasoline_blob.cpp
+			$File	fortress/grenade_rocket.cpp
+			$File	fortress/grenade_rocket.h
+			$File	fortress/mortar_round.cpp
+			$File	fortress/mortar_round.h
+			$File	fortress/basecombatcharacter_tf2.cpp
+			$File	fortress/bot_base.cpp
+			$File	fortress/bot_base.h
+			$File	fortress/controlzone.cpp
+			$File	fortress/controlzone.h
+			$File	fortress/env_meteor.cpp
+			$File	fortress/env_meteor.h
+			$File	fortress/info_act.cpp
+			$File	fortress/info_act.h
+			$File	fortress/info_buildpoint.cpp
+			$File	fortress/info_buildpoint.h
+			$File	fortress/info_customtech.cpp
+			$File	fortress/info_customtech.h
+			$File	fortress/info_input_respawnplayers.cpp
+			$File	fortress/info_vehicle_bay.cpp
+			$File	fortress/info_vehicle_bay.h
+			$File	fortress/menu_base.cpp
+			$File	fortress/menu_base.h
+			$File	fortress/ragdoll_shadow.cpp
+			$File	fortress/ragdoll_shadow.h
+			$File	fortress/resource_chunk.cpp
+			$File	fortress/resource_chunk.h
+			$File	fortress/sensor_tf_team.cpp
+			$File	fortress/team_messages.h
+			$File	fortress/tf2_eventlog.cpp
+			$File	fortress/tf_basecombatweapon.h
+			$File	fortress/tf_client.cpp
+			$File	fortress/tf_func_no_build.cpp
+			$File	fortress/tf_func_no_build.h
+			$File	fortress/tf_func_resource.cpp
+			$File	fortress/tf_func_resource.h
+			$File	fortress/tf_func_construction_yard.cpp
+			$File	fortress/tf_func_construction_yard.h
+			$File	fortress/tf_gameinterface.cpp
+			$File	fortress/tf_hintmanager.cpp
+			$File	fortress/tf_hintmanager.h
+			$File	fortress/tf_player.cpp
+			$File	fortress/tf_player.h
+			$File	fortress/tf_playerclass.cpp
+			$File	fortress/tf_playerclass.h
+			$File	fortress/tf_playerlocaldata.cpp
+			$File	fortress/tf_playerlocaldata.h
+			$File	fortress/tf_playermove.cpp
+			$File	fortress/tf_player_death.cpp
+			$File	fortress/tf_player_resource.cpp
+			$File	fortress/tf_player_resource.h
+			$File	fortress/tf_reconvars.cpp
+			$File	fortress/tf_reconvars.h
+			$File	fortress/tf_shield.cpp
+			$File	fortress/tf_shield.h
+			$File	fortress/tf_shield_flat.cpp
+			$File	fortress/tf_shield_flat.h
+			$File	fortress/tf_stats.cpp
+			$File	fortress/tf_stats.h
+			$File	fortress/tf_team.cpp
+			$File	fortress/tf_team.h
+			$File	fortress/tf_flare.cpp
+			$File	fortress/tf_flare.h
+			$File	fortress/tf_func_mass_teleport.cpp
+			$File	fortress/tf_func_mass_teleport.h
+			
+			$Folder "Triggers" 
+			{
+				$File fortress/trigger_skybox.cpp
+			}
+
+			$Folder "Vehicles"
+			{
+				$File	fortress/tf_basefourwheelvehicle.cpp
+				$File	fortress/tf_basefourwheelvehicle.h
+				$File	fortress/tf_vehicle_teleport_station.cpp
+				$File	fortress/tf_vehicle_teleport_station.h
+				$File	fortress/tf_vehicle_tank.cpp
+				$File	fortress/tf_vehicle_tank.h
+				$File	fortress/tf_walker_base.cpp
+				$File	fortress/tf_walker_base.h
+				$File	fortress/tf_walker_strider.cpp
+				$File	fortress/tf_walker_strider.h
+			}
+
+			$File	fortress/tf_obj_mcv_selection_panel.cpp
+			$File	fortress/tf_obj_mcv_selection_panel.h
+		}
+	}
+}

@@ -1,0 +1,9 @@
+CommanderOverlays
+{
+	resourcezone
+	{
+		type		resourcezone
+		color		"255 255 255 255"
+		material	hud/minimap/object_icon
+	}
+}

@@ -1,0 +1,159 @@
+"sprites/640_hud"
+{
+	TextureData
+	{		
+		human_weapon_selection_background_1
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		human_weapon_selection_background_2
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		human_weapon_selection_background_3
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		human_weapon_selection_background_4
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		human_weapon_selection_background_5
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		human_weapon_selection_background_6
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		human_weapon_selection_background_7
+		{
+			file	hud/menu/human_weapon_selection_background
+			x	0
+			y	0
+			width	512
+			height	256
+		}
+
+		weapon_selection_offensive
+		{
+				file	hud/menu/weapon_selection_offensive
+				x	0
+				y	0
+				width	256
+				height	128
+		}
+		
+		weapon_selection_defensive
+		{
+				file	hud/menu/weapon_selection_defensive
+				x	0
+				y	0
+				width	256
+				height	128
+		}
+		
+		weapon_selection_general
+		{
+				file	hud/menu/weapon_selection_general
+				x		0
+				y		0
+				width	256
+				height	128
+		}
+		
+		selection_obj_powerpack
+		{
+			file	hud/menu/selection_obj_powerpack
+			x		0
+			y		0
+			width	256
+			height	128
+		}
+		
+		selection_obj_resourcepump
+		{
+			file	hud/menu/selection_obj_resourcepump
+			x		0
+			y		0
+			width	256
+			height	128
+		}
+		
+		// Custom Icons //
+		
+		crosshair_hover
+		{
+			file	vgui/vgui_hover
+			x		0
+			y		0
+			width	64
+			height	64
+		}
+		
+		//////////////////////
+		
+		"d_skull"
+		{
+				"file"		"sprites/640hud1"
+				"x"			"192"
+				"y"			"224"
+				"width"		"32"
+				"height"	"16"
+		}
+		"d_tracktrain"
+		{
+				"file"		"sprites/640hud1"
+				"x"			"192"
+				"y"			"240"
+				"width"		"32"
+				"height"	"16"
+		}
+		"voice_player"
+		{
+				"file"		"voice/icntlk_sv"
+				"x"		"0"
+				"y"		"0"
+				"width"		"32"
+				"height"	"32"
+		}
+		"voice_self"
+		{
+				"file"		"voice/icntlk_local"
+				"x"		"0"
+				"y"		"0"
+				"width"		"32"
+				"height"	"32"
+		}
+	}	
+}

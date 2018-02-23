@@ -1,0 +1,143 @@
+Invasion Notes
+
+This is a set of notes to stop myself looking into things thinking they're a bug
+and finding out shortly after that they're instead by design. Invasion worked very
+differently to the final TF2 so I really need to teach myself to keep out of that
+mindset. I suppose these will also help anyone else curious as to why certain things
+seem to do what they do...
+
+Invasion Demo Dates (UK Format)
+05/02/03 - proxy_sunroof.cpp, proxy_shield.cpp
+
+--------------------------
+
+/*
+Copyright (C) Valve Corporation
+Copyright (C) 2014-2017 TalonBrave.info
+*/
+
+--------------------------
+
+List of models
+
+	models/objects/obj_manned_plasmagun.mdl
+	models/objects/human_obj_manned_plasmagun.mdl
+	models/projectiles/grenade_limpet.mdl
+	models/props/common/holo_banner/holo_banner.mdl
+	models/items/healthkit.mdl
+	
+	Player models
+	models/player/human_recon.mdl
+	models/player/alien_recon.mdl
+	models/player/human_commando.mdl
+	models/player/alien_commando.mdl
+
+--------------------------
+
+Classes (* = Functional):
+	Commando*
+	Defender*
+	Escort*
+	Infiltrator
+	Medic*
+	Recon
+	Sniper
+	Support
+	Sapper*
+	Pyro
+	
+Technology:
+	Recon Radar Scanner (rec_b_radar_scanners)
+	
+	
+Objects:
+	Powerpack
+	Resupply
+	Sentry Gun Plasma
+	Sentry Gun Rocket Launcher
+	Shield Wall
+	Resource Pump
+	Respawn Station
+	Rally Flag
+	Manned Plasma Gun
+	Manned Missile Launcher
+	Manned Shield
+	EMP Generator
+	Buff Station
+	Barbed Wire
+	MCV Selection Panel
+	Map Defined
+	Mortar
+	Self Heal
+	Armor Upgrade
+	Vehicle Boost
+	Explosives
+	Driver Machine Gun
+	Battering Ram
+	Siege Tower
+	Wagon
+	Flat Bed
+	Vehicle Mortar
+	Vehicle Teleport Station
+	Vehicle Tank
+	Vehicle Motorcycle
+	Walker Strider
+	Walker Mini Strider
+	Tower
+	Tunnel
+	Sandbag Bunker
+	Bunker
+	Dragons Teeth
+
+Q.	I can collide with capture points, resource areas and so on. Is this intended?
+A.	Seems to have been a bug, this has been resolved now.
+
+Q.	What do we know about the turret?
+A.	Functionality seems identical to the turret featured in the final game, however there
+	is mention of "turtling" which seems to involve the turret closing down into itself which I
+	suppose is intended to protect it?
+
+Q.	What are the ammo types?
+A.	These are located in tf_gamerules.cpp
+	Bullets			:	DMG_BULLET
+	Rockets			:	DMG_BLAST
+	Grenades		:	DMG_BLAST
+	ShieldGrenades	:	DMG_ENERGYBEAM
+	ShotgunEnergy	:	DMG_ENERGYBEAM
+	PlasmaGrenade	:	DMG_ENERGYBEAM|DMG_BLAST
+	ResourceChunks	:	DMG_GENERIC
+	Limpets			:	DMG_BLAST
+	Gasoline		:	DMG_BURN
+	RallyFlags		:	DMG_GENERIC
+	EMPGenerators	:	DMG_GENERIC
+
+Q.	Where did resources come from?
+A.	Right now as far as I understand it, the aliens are responsible for the resources
+	that exists in the Invasion phase of Team Fortress 2. There are two things that
+	somewhat tell me this; concept art produced by Chuck Jones that shows an alien
+	that spits out a large blob, with other elements included along-side this reflecting
+	a style that can be seen with the Alien Commando model (circles). Additionally to support
+	this it's worth pointing out that an entity called the Resource Spawner is set up to use an 
+	animated model.
+	
+Q.	Were there meant to be multiple resource types?
+A.	It looks like this was intended but never implemented.
+
+Q. 	I've set object limits but can keep on creating objects anyway...
+A. 	This is by design, players aren't limited by the number of objects but by
+	their resource count instead, by default. There's a console variable however
+	that will change how this works; tf2_object_hard_limits, which by default is
+	obviously false.
+	
+Q.	I've given an object a resource cost of 100 only to find that it's using 80
+	in-game.
+A.	This'll only occur when on the Human team as they automatically get an 8%
+	discount on their objects.
+	
+Q.	I died but didn't lose any resources?
+A.	Resources are held by the team, not individual players.
+
+Q.	Why aren't there any sparks when I hit something?
+A.	To put it simply, they probably weren't implemented when Invasion was being
+	developed. It seems that Invasion used physical models to produce such impact
+	effects (which were also disabled due to perf concerns).
